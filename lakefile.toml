@@ -1,0 +1,6 @@
+name = "AlgebraFromScratch"
+version = "0.1.0"
+defaultTargets = ["AlgebraFromScratch"]
+
+[[lean_lib]]
+name = "AlgebraFromScratch"

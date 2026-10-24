@@ -1,0 +1,19 @@
+name: Lean build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: false
+      - name: Check for sorry
+        run: |
+          if grep -rn --include='*.lean' '\bsorry\b' AlgebraFromScratch; then
+            echo "Found sorry" && exit 1
+          fi
